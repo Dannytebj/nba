@@ -6,6 +6,7 @@ import {
     createStackNavigator,
     createSwitchNavigator
 } from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // SCREENS
 import Auth from './components/auth';
@@ -39,6 +40,29 @@ const GameStack = createStackNavigator({
 const AppStack = createBottomTabNavigator({
     News: NewsStack,
     Games: GameStack
+},{
+    tabBarOptions: {
+        activeTintColor: '#fff',
+        showLabel: false,
+        activeBackgroundColor: '#00194b',
+        inactiveBackgroundColor: '#001338',
+        style: {
+            backgroundColor: '#001338'
+        }
+    },
+    initialRouteName: 'News',
+    defaultNavigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({ focused, horizontal, tintColor }) => {
+            const { routeName } = navigation.state;
+            let iconName;
+            if(routeName === 'News') {
+                iconName = `ios-basketball`
+            } else if (routeName === `Games`) {
+                iconName = `md-tv`;
+            }
+            return <Ionicons name={iconName} size={25} color={tintColor} />;
+        }
+    })
 });
 
 const AuthStack = createStackNavigator({
