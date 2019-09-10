@@ -30,3 +30,18 @@ export const getTokens = (cb) => {
         cb(response);
     });
 }
+
+export const formatFirebaseData = data => {
+    const newData = [];
+        for(key in data) {
+            newData.push({
+                ...data[key],
+                id: key
+            })
+        }
+        return newData;
+}
+
+export const findTeamData = (itemId, teams) => {
+    return teams.find(team => team.id === itemId);
+}

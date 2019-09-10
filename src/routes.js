@@ -29,12 +29,12 @@ const headerConf = {
 
 const NewsStack = createStackNavigator({
     News,
-    NewsArticle
+    Article: NewsArticle
 }, headerConf);
 
 const GameStack = createStackNavigator({
     Games,
-    GamesArticle
+    Article: GamesArticle
 }, headerConf);
 
 const AppStack = createBottomTabNavigator({
